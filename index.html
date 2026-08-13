@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROWYAL FLOW</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --light-gold: #f3e5ab;
+            --dark-gold: #aa771c;
+            --white: #ffffff;
+            --off-white: #f9f9f9;
+            --black: #111111;
+            --dark-bg: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: #222;
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            overflow: hidden;
+            padding: 30px;
+            margin: 20px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--gold);
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        .brand-title {
+            font-size: 2.3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-gold);
+            font-size: 0.9rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            background: #333;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--light-gold);
+            box-shadow: 0 0 8px rgba(243, 229, 171, 0.5);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, var(--dark-gold), var(--gold));
+            border: none;
+            border-radius: 8px;
+            color: var(--black);
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, var(--gold), var(--light-gold));
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.8);
+        }
+
+        .user-info {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .user-info p {
+            margin: 5px 0;
+            color: var(--off-white);
+            font-size: 0.95rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .action-buttons .btn {
+            margin-top: 0;
+        }
+
+        .products-section h3 {
+            color: var(--gold);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .product-card {
+            background: #2c2c2c;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .product-card h4 {
+            color: var(--light-gold);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .product-card p {
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .info-box {
+            background: #2a2a2a;
+            border: 1px dashed var(--gold);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info-box h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .info-box p {
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+
+        .highlight-number {
+            font-size: 1.5rem !important;
+            color: var(--light-gold) !important;
+            font-weight: bold;
+            background: #111;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+            border: 1px solid var(--dark-gold);
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            margin-top: 15px;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Page 1: Registration -->
+        <div id="regPage" class="page active">
+            <h2>REGISTRATION</h2>
+            <div class="form-group">
+                <label>Mobile Number</label>
+                <input type="tel" id="regNumber" placeholder="01XXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="regPass" placeholder="Enter password">
+            </div>
+            <div class="form-group">
+                <label>Confirm Password</label>
+                <input type="password" id="regConfirmPass" placeholder="Confirm password">
+            </div>
+            <button type="button" class="btn" onclick="handleRegister()">Register</button>
+        </div>
+
+        <!-- Page 2: Dashboard (ROWYAL FLOW) -->
+        <div id="dashPage" class="page">
+            <h1 class="brand-title">ROWYAL FLOW</h1>
+            <div class="user-info">
+                <p><strong>Number:</strong> <span id="displayNumber"></span></p>
+                <p><strong>Amount:</strong> ৳<span id="displayAmount">5,420.00</span></p>
+            </div>
+            <div class="action-buttons">
+                <button class="btn" onclick="openPage('withdrawPage')">Withdraw</button>
+                <button class="btn" onclick="openPage('depositPage')">Deposit</button>
+            </div>
+            
+            <div class="products-section">
+                <h3>Product Stacker</h3>
+                <div class="product-grid">
+                    <div class="product-card">
+                        <h4>Gold Ring</h4>
+                        <p>৳15,000</p>
+                    </div>
+                    <div class="product-card">
+                        <h4>Royal Watch</h4>
+                        <p>৳28,500</p>
+                    </div>
+                    <div class="product-card">
+                        <h4>Diamond Chain</h4>
+                        <p>৳45,000</p>
+                    </div>
+                    <div class="product-card">
+                        <h4>Silver Crown</h4>
+                        <p>৳12,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page 3: Deposit Page -->
+        <div id="depositPage" class="page">
+            <h1 class="brand-title" style="font-size: 1.8rem;">BKASH / NAGAD</h1>
+            <div class="info-box">
+                <p style="font-size: 1rem; color: #ccc; margin-bottom: 10px;">Send money to this number:</p>
+                <div class="highlight-number">01842400479</div>
+            </div>
+            <button class="btn back-btn" onclick="openPage('dashPage')">Back</button>
+        </div>
+
+        <!-- Page 4: Withdraw Page -->
+        <div id="withdrawPage" class="page">
+            <h1 class="brand-title" style="font-size: 1.8rem;">WITHDRAW</h1>
+            <div class="info-box">
+                <h3 style="color: var(--light-gold);">CONTACT ADMIN</h3>
+                <p style="font-size: 1rem; color: #ccc; margin-top: 10px;">Please contact the admin for withdrawal.</p>
+            </div>
+            <button class="btn back-btn" onclick="openPage('dashPage')">Back</button>
+        </div>
+    </div>
+
+    <script>
+        function handleRegister() {
+            const num = document.getElementById('regNumber').value;
+            const pass = document.getElementById('regPass').value;
+            const confirmPass = document.getElementById('regConfirmPass').value;
+
+            if (num === "" || pass === "" || confirmPass === "") {
+                alert("সবগুলো ঘর পূরণ করুন!");
+                return;
+            }
+
+            if (pass !== confirmPass) {
+                alert("পাসওয়ার্ড মিলkou নাই!");
+                return;
+            }
+
+            document.getElementById('displayNumber').innerText = num;
+            openPage('dashPage');
+        }
+
+        function openPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
